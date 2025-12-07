@@ -153,7 +153,7 @@ function php-version-id {
 
 $PREFERRED_PHP_VERSION_BASE=""
 switch ($env:PM_VERSION_MAJOR) {
-    5 { $PREFERRED_PHP_VERSION_BASE="8.2" }
+    5 { $PREFERRED_PHP_VERSION_BASE="8.4" }
     $null { pm-fatal-error "Please specify PocketMine-MP major version by setting the PM_VERSION_MAJOR environment variable" }
     default { pm-fatal-error "PocketMine-MP $PM_VERSION_MAJOR is not supported by this version of the build script" }
 }
@@ -585,7 +585,7 @@ sdk-command "configure^`
     --with-yaml^`
     --with-pdo-mysql^`
     --with-pdo-sqlite^`
-    --without-readline"
+    --with-readline"
 
 write-compile
 sdk-command "nmake"

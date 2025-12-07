@@ -267,7 +267,7 @@ function php_version_id {
 PREFERRED_PHP_VERSION_BASE=""
 case $PM_VERSION_MAJOR in
 	5)
-		PREFERRED_PHP_VERSION_BASE="8.2"
+		PREFERRED_PHP_VERSION_BASE="8.4"
 		;;
 	"")
 		write_error "Please specify PocketMine-MP major version target with -P (e.g. -P5)"
@@ -1244,7 +1244,7 @@ RANLIB=$RANLIB CFLAGS="$CFLAGS $FLAGS_LTO" CXXFLAGS="$CXXFLAGS $FLAGS_LTO" LDFLA
 $HAS_LIBJPEG \
 $HAS_GD \
 --with-leveldb="$INSTALL_DIR" \
---without-readline \
+--with-readline \
 $HAS_DEBUG \
 --enable-chunkutils2 \
 --enable-morton \
