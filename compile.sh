@@ -263,21 +263,7 @@ function php_version_id {
 	echo "$PHP_VERSION_ID"
 }
 
-PREFERRED_PHP_VERSION_BASE=""
-case $PM_VERSION_MAJOR in
-	5)
-		PREFERRED_PHP_VERSION_BASE="8.4"
-		;;
-	"")
-		write_error "Please specify PocketMine-MP major version target with -P (e.g. -P5)"
-		exit 1
-		;;
-	\?)
-		write_error "PocketMine-MP $PM_VERSION_MAJOR is not supported by this version of the build script"
-		exit 1
-		;;
-esac
-
+PREFERRED_PHP_VERSION_BASE="8.4"
 write_out "opt" "Compiling with configuration for PocketMine-MP $PM_VERSION_MAJOR"
 
 if [ "$PHP_VERSION_BASE" == "auto" ]; then
@@ -499,7 +485,7 @@ echo "}" >> test.c
 type $CC >> "$DIR/install.log" 2>&1 || { write_error "Please install \"$CC\""; exit 1; }
 
 if [ -z "$THREADS" ]; then
-	write_out "WARNING" "Only 1 thread is used by default. Increase thread count using -j (e.g. -j 4) to compile faster."	
+	write_out "WARNING" "Only 1 thread is used by default. Increase thread count using -j (e.g. -j 4) to compile faster."
 	THREADS=1;
 fi
 [ -z "$march" ] && march=native;
@@ -1242,7 +1228,7 @@ RANLIB=$RANLIB CFLAGS="$CFLAGS $FLAGS_LTO" CXXFLAGS="$CXXFLAGS $FLAGS_LTO" LDFLA
 $HAS_LIBJPEG \
 $HAS_GD \
 --with-leveldb="$INSTALL_DIR" \
---with-readline \
+--without-readline \
 $HAS_DEBUG \
 --enable-chunkutils2 \
 --enable-morton \
